@@ -2,6 +2,7 @@ package com.h1.mycardeepdive.pdf.ui;
 
 import static com.epages.restdocs.apispec.ResourceDocumentation.resource;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.doCallRealMethod;
 import static org.mockito.Mockito.when;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
@@ -44,7 +45,7 @@ class PdfControllerTest extends ControllerTestConfig {
         // given
         String pdfId = "64e231fe2d19c0147d010b21";
         String email = "mycardeepdiveto@test.com";
-        when(mailService.sendMessage(email, pdfId)).thenReturn(true);
+        doCallRealMethod().when(mailService).sendMessage(email, pdfId);
 
         // then
         ResultActions resultActions =

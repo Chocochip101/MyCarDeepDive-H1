@@ -13,6 +13,7 @@ import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,7 +39,8 @@ public class MailServiceImpl implements MailService {
     private String username;
 
     @Override
-    public boolean sendMessage(String to, String pdfId)
+    @Async
+    public void sendMessage(String to, String pdfId)
             throws MessagingException, UnsupportedEncodingException {
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, ENCODING);
@@ -55,7 +57,6 @@ public class MailServiceImpl implements MailService {
             throw new MyCarDeepDiveException(HttpStatus.BAD_REQUEST, ErrorType.PDF_CREATE_ERROR);
         }
         emailSender.send(message);
-        return true;
     }
 
     private String renderMailHtml() {
