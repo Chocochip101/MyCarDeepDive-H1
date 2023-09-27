@@ -40,7 +40,7 @@ public class MailServiceImpl implements MailService {
 
     @Override
     @Async
-    public void sendMessage(String to, String pdfId)
+    public void sendMail(String to, String pdfId)
             throws MessagingException, UnsupportedEncodingException {
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, ENCODING);

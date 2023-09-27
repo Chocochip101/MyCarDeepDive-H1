@@ -4,6 +4,5 @@ import java.io.UnsupportedEncodingException;
 import javax.mail.MessagingException;
 
 public interface MailService {
-    void sendMessage(String to, String pdfId)
-            throws MessagingException, UnsupportedEncodingException;
+    void sendMail(String to, String pdfId) throws MessagingException, UnsupportedEncodingException;
 }

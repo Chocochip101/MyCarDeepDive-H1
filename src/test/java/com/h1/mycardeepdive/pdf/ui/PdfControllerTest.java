@@ -45,7 +45,7 @@ class PdfControllerTest extends ControllerTestConfig {
         // given
         String pdfId = "64e231fe2d19c0147d010b21";
         String email = "mycardeepdiveto@test.com";
-        doCallRealMethod().when(mailService).sendMessage(email, pdfId);
+        doCallRealMethod().when(mailService).sendMail(email, pdfId);
 
         // then
         ResultActions resultActions =

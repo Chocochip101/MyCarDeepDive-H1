@@ -22,7 +22,7 @@ public class PdfController {
     public ApiResponse<Boolean> sendEmail(
             @PathVariable("email") String email, @PathVariable("pdf-id") String pdfId)
             throws Exception {
-        mailService.sendMessage(email, pdfId);
+        mailService.sendMail(email, pdfId);
         return new ApiResponse<>(true);
     }
 
