@@ -237,8 +237,11 @@ public class PdfService {
                                         new MyCarDeepDiveException(
                                                 HttpStatus.BAD_REQUEST, ErrorType.PDF_NOT_FOUND));
         long option_total_price =
-        pdfInfo.getExterior_color_price() + pdfInfo.getInterior_color_price() + 
-                pdfInfo.getOptionList().stream().mapToLong(SimpleOption::getOption_price).sum()
+                pdfInfo.getExterior_color_price()
+                        + pdfInfo.getInterior_color_price()
+                        + pdfInfo.getOptionList().stream()
+                                .mapToLong(SimpleOption::getOption_price)
+                                .sum()
                         + pdfInfo.getBasic_price();
 
         return new CarInformation(

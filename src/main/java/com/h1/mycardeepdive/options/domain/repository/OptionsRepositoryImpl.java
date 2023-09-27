@@ -95,8 +95,10 @@ public class OptionsRepositoryImpl implements OptionsRepositoryCustom {
                 .distinct()
                 .innerJoin(carSpecOptions)
                 .on(options.id.eq(carSpecOptions.options.id))
+                .fetchJoin()
                 .innerJoin(optionTag)
                 .on(options.id.eq(optionTag.option.id))
+                .fetchJoin()
                 .where(
                         optionTag
                                 .tag
